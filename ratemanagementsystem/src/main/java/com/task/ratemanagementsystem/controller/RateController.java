@@ -1,5 +1,6 @@
 package com.task.ratemanagementsystem.controller;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +19,20 @@ import com.task.ratemanagementsystem.model.RateEntity;
 import com.task.ratemanagementsystem.model.RateResponse;
 import com.task.ratemanagementsystem.service.RateService;
 
+import ch.qos.logback.classic.Logger;
+
 @RestController
 @RequestMapping("/rate")
 public class RateController {
+
+	private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(RateController.class);
 
 	@Autowired
 	RateService rateService;
 
 	@PostMapping(consumes = "application/json")
 	public ResponseEntity<RateEntity> create(@RequestBody RateEntity rateEntity) throws ServerException {
+		LOGGER.info("Inside RateController Save..");
 		return new ResponseEntity<RateEntity>(rateService.saveRate(rateEntity), HttpStatus.CREATED);
 	}
 
@@ -37,6 +43,8 @@ public class RateController {
 
 	@GetMapping("/{rateId}")
 	public ResponseEntity<RateResponse> get(@PathVariable Long rateId) throws ServerException, RateNotFound {
+
+		LOGGER.info("Inside RateController Get..");
 		return new ResponseEntity<RateResponse>(rateService.searchRate(rateId), HttpStatus.OK);
 	}
 
