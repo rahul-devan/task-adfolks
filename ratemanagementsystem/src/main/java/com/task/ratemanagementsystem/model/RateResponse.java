@@ -1,0 +1,78 @@
+package com.task.ratemanagementsystem.model;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class RateResponse {
+
+	@JsonProperty("rateId")
+	private long rateId;
+
+	@JsonProperty("description")
+	private String description;
+
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime effectiveDate;
+
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime expirationDate;
+
+	@JsonProperty("amount")
+	private int amount;
+
+	@JsonProperty("surchargeDetails")
+	private SurchargeDetails surchargeDetails;
+
+	public long getRateId() {
+		return rateId;
+	}
+
+	public void setRateId(long rateId) {
+		this.rateId = rateId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public LocalDateTime getEffectiveDate() {
+		return effectiveDate;
+	}
+
+	public void setEffectiveDate(LocalDateTime effectiveDate) {
+		this.effectiveDate = effectiveDate;
+	}
+
+	public LocalDateTime getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(LocalDateTime expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public SurchargeDetails getSurchargeDetails() {
+		return surchargeDetails;
+	}
+
+	public void setSurchargeDetails(SurchargeDetails surchargeDetails) {
+		this.surchargeDetails = surchargeDetails;
+	}
+
+}
